@@ -46,15 +46,43 @@ function copyPassword () {
   alert("Copied the text: " + copyText.value);
   }
  
-var isUppercase = document.getElementById("uppercase").checked;
-var isLowercase = document.getElementById("lowercase").checked;
-var isDigits = document.getElementById("digits").checked;
-var isSymbols = document.getElementById("symbols").checked;
+function generatePassword(length){
+  
+  var isUppercase = document.getElementById("uppercase").checked;
+  var isLowercase = document.getElementById("lowercase").checked;
+  var isDigits = document.getElementById("digits").checked;
+  var isSymbols = document.getElementById("symbols").checked;
+
+  !isUppercase && !isLowercase && !isDigits && !isSymbols ? document.getElementById("uppercase").checked=true : null;
+
+  var all = "";
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowercase = "abcdefghijklmnopqrstuvwxyz";
+  var digits = "0123456789";
+  var symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+
+  isUppercase ? all = all.concat(uppercase) : null;
+  isLowercase ? all = all.concat(lowercase) : null;
+  isDigits ? all = all.concat(digits) : null;
+  isSymbols ? all = all.concat(symbols) : null;
+
+  var shuffled = all.split('').sort(function(){return 0.5-Math.random()}).join('');
+  // console.log(shuffled);
+  // all = all.concat(uppercase);
+  var password = '';
+  for (var index = 0; index < length; index++) {
+      var reShuffled = shuffled.split('').sort(function(){return 0.5-Math.random()}).join('');
+      var character = Math.floor(Math.random() * reShuffled.length);
+      password += reShuffled.charAt(character);
+      // console.log(reShuffled);
+  }
+  return password;
+}
 
 // Write password to the #password input
 function writePassword() {
-  // var password = generatePassword();
-  var password = upperValue;
+var password = generatePassword(slider1.value);
+  // var password = slider1.value;
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
