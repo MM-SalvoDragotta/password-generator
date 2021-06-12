@@ -34,16 +34,33 @@ output.innerHTML = this.value;
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var generateCopyPassword = document.querySelector("#Copy-password");
+
+// https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+function copyPassword () {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+  }
+ 
+var isUppercase = document.getElementById("uppercase").checked;
+var isLowercase = document.getElementById("lowercase").checked;
+var isDigits = document.getElementById("digits").checked;
+var isSymbols = document.getElementById("symbols").checked;
 
 // Write password to the #password input
 function writePassword() {
   // var password = generatePassword();
-  var password = slider1.value;
+  var password = upperValue;
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+generateCopyPassword.addEventListener("click", copyPassword);
+
+
