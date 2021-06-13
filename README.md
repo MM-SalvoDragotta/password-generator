@@ -9,7 +9,7 @@ You can view the deployed password generator at this link. [Password generator](
 
 The following animation shows the web application's appearance and functionality:
 
-![Password Generator](.assets/images/PasswordGenerator.gif)
+![Password Generator](./assets/images/PasswordGenerator.gif)
 
 - - -
 © 2021. Confidential and Proprietary. All Rights Reserved.
