@@ -24,6 +24,22 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 */
 
+
+// Uppercase always checked to produce a password
+function AtLeastOneCheckbox() {
+  var isUppercase = document.getElementById("uppercase").checked;
+  var isLowercase = document.getElementById("lowercase").checked;
+  var isDigits = document.getElementById("digits").checked;
+  var isSymbols = document.getElementById("symbols").checked;
+  var boolMask = [isUppercase,isLowercase,isDigits,isSymbols]
+  switch(true){
+   case (boolMask[0]===false && boolMask[1]===false && boolMask[2]===false && boolMask[3]===false) : document.getElementById("uppercase").checked=true;
+   break;
+  }
+};
+
+window.setInterval(AtLeastOneCheckbox, 1);  
+
 //Display the value of the length slider
 var slider1 = document.getElementById("myRange");
 var output = document.getElementById("demo");
@@ -38,6 +54,7 @@ var generateCopyPassword = document.querySelector("#Copy-password");
 const checkAllCheckboxes = document.querySelector("#select-all");
 
 // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+//Copy Generated passwoord to Clipboard
 function copyPassword () {
   var copyText = document.getElementById("password");
   copyText.select();
@@ -47,15 +64,11 @@ function copyPassword () {
   alert("Copied the text: " + copyText.value);
   }
  
-function generatePassword(length){
-  
+function generatePassword(length){  
   var isUppercase = document.getElementById("uppercase").checked;
   var isLowercase = document.getElementById("lowercase").checked;
   var isDigits = document.getElementById("digits").checked;
-  var isSymbols = document.getElementById("symbols").checked;
-
-  !isUppercase && !isLowercase && !isDigits && !isSymbols ? document.getElementById("uppercase").checked=true : null;
-  
+  var isSymbols = document.getElementById("symbols").checked;    
 
   var all = "";
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -63,16 +76,18 @@ function generatePassword(length){
   var digits = "0123456789";
   var symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 
+  //Add to Array deoending on which checkbox is checked
   isUppercase ? all = all.concat(uppercase) : null;
   isLowercase ? all = all.concat(lowercase) : null;
   isDigits ? all = all.concat(digits) : null;
   isSymbols ? all = all.concat(symbols) : null;
 
+  //Shuffle the string
   var shuffled = all.split('').sort(function(){return 0.5-Math.random()}).join('');
   // console.log(shuffled);
-  // all = all.concat(uppercase);
   var password = '';
   for (var i = 0; i < length; i++) {
+      //Re-Shuffle the string at each iteration
       var reShuffled = shuffled.split('').sort(function(){return 0.5-Math.random()}).join('');
       var character = Math.floor(Math.random() * reShuffled.length);
       password += reShuffled.charAt(character);
@@ -89,7 +104,7 @@ var password = generatePassword(slider1.value);
   passwordText.value = password;
 }
 
-//Checks all criteria when Select All is clicked
+//Checks all criterias when Select All is clicked
 function check(checked = true) {
   const cbs = document.querySelectorAll('input[name="criteria"]');
   cbs.forEach((cb) => {
@@ -112,5 +127,4 @@ function uncheckAll() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 generateCopyPassword.addEventListener("click", copyPassword);
-// checkAllCheckboxes.addEventListeneron ("click" , checkAll)
 checkAllCheckboxes.onclick = checkAll;

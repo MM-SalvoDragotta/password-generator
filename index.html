@@ -32,16 +32,12 @@
             <!-- <font color="black">Value: <span id="demo"></span> -->
             <span>8</span><input type="range" min="8" max="128" value="12" class="slider" id="myRange" name = "128" step="1"><span>128</span>
           </div>
-          <form>
-            <input type="checkbox" id="select-all" unchecked> Select All 
-            <br>
-            <input type="checkbox" name="criteria" id="uppercase" unchecked> Uppercase (e.g. ABC)
-            <br>
-            <input type="checkbox" name="criteria" id="lowercase" unchecked> Lowercase (e.g. abc)
-            <br>
-            <input type="checkbox" name="criteria" id="digits" unchecked> Digits (e.g. 123)
-            <br>
-            <input type="checkbox" name="criteria" id="symbols" unchecked> Symbols (e.g. @#$)
+          <form >
+            <p class="all"><input type="checkbox" id="select-all" unchecked> Select All </p>            
+            <p><input type="checkbox" name="criteria" id="uppercase" checked> Uppercase (e.g. ABC) </p>            
+            <p><input type="checkbox" name="criteria" id="lowercase" unchecked> Lowercase (e.g. abc)</p>            
+            <p><input type="checkbox" name="criteria" id="digits" unchecked> Digits (e.g. 123) </p>            
+            <p><input type="checkbox" name="criteria" id="symbols" unchecked> Symbols (e.g. @#$) </p>
           </form>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
