@@ -88,6 +88,60 @@ header {
   cursor: pointer;
 }
 
+/* Ghost Button */
+button:hover{
+  color: hsl(360, 91%, 36%);
+  border: hsl(360, 91%, 36%) solid 2px;
+  background:#fff;
+}
+
+/* Grow In */
+/* button:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+} */
+
+/* Bounce */
+/* @keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+}
+
+/* Skew */
+/* button:hover {
+  animation: bounce 1s;
+} */
+
+/* Skew */
+/* button:hover {
+  transform: skew(-10deg);
+} */
+
+/* Highlight Border */
+/* button {
+  border: 3px solid hsl(360, 91%, 36%);
+}
+
+button:hover {
+  border: 3px dotted hsl(360, 91%, 36%);
+  color: hsl(360, 91%, 36%);
+  background: #fff;
+} */
+
+
 button[disabled] {
   cursor: default;
   background: #c0c7cf;
@@ -143,7 +197,7 @@ button[disabled] {
 }
 
 /* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
-
+/* Slider*/
 .slidecontainer {
   display: flex;
   flex-direction: row;
