@@ -35,6 +35,7 @@ output.innerHTML = this.value;
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var generateCopyPassword = document.querySelector("#Copy-password");
+const checkAllCheckboxes = document.querySelector("#select-all");
 
 // https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 function copyPassword () {
@@ -54,6 +55,7 @@ function generatePassword(length){
   var isSymbols = document.getElementById("symbols").checked;
 
   !isUppercase && !isLowercase && !isDigits && !isSymbols ? document.getElementById("uppercase").checked=true : null;
+  
 
   var all = "";
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -70,7 +72,7 @@ function generatePassword(length){
   // console.log(shuffled);
   // all = all.concat(uppercase);
   var password = '';
-  for (var index = 0; index < length; index++) {
+  for (var i = 0; i < length; i++) {
       var reShuffled = shuffled.split('').sort(function(){return 0.5-Math.random()}).join('');
       var character = Math.floor(Math.random() * reShuffled.length);
       password += reShuffled.charAt(character);
@@ -87,8 +89,28 @@ var password = generatePassword(slider1.value);
   passwordText.value = password;
 }
 
+//Checks all criteria when Select All is clicked
+function check(checked = true) {
+  const cbs = document.querySelectorAll('input[name="criteria"]');
+  cbs.forEach((cb) => {
+      cb.checked = checked;
+  });
+}
+
+function checkAll() {
+  check();
+  // reassign click event handler
+  this.onclick = uncheckAll;
+}
+
+function uncheckAll() {
+  check(false);
+  // reassign click event handler
+  this.onclick = checkAll;
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 generateCopyPassword.addEventListener("click", copyPassword);
-
-
+// checkAllCheckboxes.addEventListeneron ("click" , checkAll)
+checkAllCheckboxes.onclick = checkAll;

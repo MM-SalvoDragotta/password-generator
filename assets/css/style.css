@@ -164,7 +164,7 @@ button[disabled] {
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #04AA6D;
+  background: hsl(360, 91%, 36%);
   cursor: pointer;
 }
 
