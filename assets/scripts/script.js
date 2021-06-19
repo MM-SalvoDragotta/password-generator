@@ -40,6 +40,15 @@ function AtLeastOneCheckbox() {
 
 window.setInterval(AtLeastOneCheckbox, 1);  
 
+var pass = document.getElementById("password");
+
+// for (var i = 0; i < pass.length; i++) {
+//   var charElem = document.createElement("span");
+//   charElem.style.color = "hsl(" + (360 * i / pass.length) + ",80%,50%)";
+//   charElem.innerHTML = pass[i];
+//   element.appendChild(charElem);
+//   }
+
 //Display the value of the length slider
 var slider1 = document.getElementById("myRange");
 var output = document.getElementById("demo");
@@ -63,6 +72,11 @@ function copyPassword () {
   document.execCommand("copy");
   alert("Copied the text: " + copyText.value);
   }
+
+  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowercase = "abcdefghijklmnopqrstuvwxyz";
+  var digits = "0123456789";
+  var symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
  
 function generatePassword(length){  
   var isUppercase = document.getElementById("uppercase").checked;
@@ -71,10 +85,6 @@ function generatePassword(length){
   var isSymbols = document.getElementById("symbols").checked;    
 
   var all = "";
-  var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var lowercase = "abcdefghijklmnopqrstuvwxyz";
-  var digits = "0123456789";
-  var symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 
   //Add to Array deoending on which checkbox is checked
   isUppercase ? all = all.concat(uppercase) : null;
@@ -102,6 +112,7 @@ var password = generatePassword(slider1.value);
   // var password = slider1.value;
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  // console.log(password);
 }
 
 //Checks all criterias when Select All is clicked
@@ -124,7 +135,35 @@ function uncheckAll() {
   this.onclick = checkAll;
 }
 
+function passValue (){
+ var password = document.querySelector("textarea");
+ password.setAttribute("style", "color:hsl(360, 91%, 36%);font-weight: bold;");
+
+// var alpha = digits.split('');
+// // console.log(alpha);
+// var res = "", cls = "";
+// var t = $("#password").text();
+// console.log(t);
+
+// for (i=0; i<t.length; i++) {
+//     for (j=0; j<alpha.length; j++) {
+//         if (t[i] == alpha[j]) {cls = "red";}
+//     }
+//     res += "<span class='"+cls+"'>"+t[i]+"</span>";
+//     cls="";
+// }
+// $("#password").html(res);
+};
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click",() => {
+  writePassword();
+  passValue();
+});
+
+// Add event listener to Copy password button
 generateCopyPassword.addEventListener("click", copyPassword);
+// Add event listener to Select All Checkbox
 checkAllCheckboxes.onclick = checkAll;
+

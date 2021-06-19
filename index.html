@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    
   </head>
-  <body>
+  <body>    
     <div class="wrapper">
       <header>
         <h1>Password Generator</h1>
@@ -17,20 +18,21 @@
           <h2>Generate a Password</h2>
         </div>
         <div class="card-body">
-          <textarea
+          <textarea class ="color-text"
             readonly
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
           ></textarea>
         </div>
+        <div id="result"></div>
+        <!-- <div contenteditable id="txt"></div> -->
         <div class="card-footer">
           <button id="Copy-password" class="btn">Copy this password</button>
         </div>
           <p>Length : <span id="demo"></span></p>
           <div class="slidecontainer">
-            <!-- <font color="black">Value: <span id="demo"></span> -->
-            <span>8</span><input type="range" min="8" max="128" value="12" class="slider" id="myRange" name = "128" step="1"><span>128</span>
+             <span>8</span><input type="range" min="8" max="128" value="12" class="slider" id="myRange" name = "128" step="1"><span>128</span>
           </div>
           <form >
             <p class="all"><input type="checkbox" id="select-all" unchecked> Select All </p>            
@@ -45,5 +47,6 @@
       </div>
     </div>
     <script src="./assets/scripts/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </body>
 </html>
